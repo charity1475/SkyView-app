@@ -28,13 +28,31 @@ public class Main extends Application {
 		grid.setHgap(10);
 		grid.setVgap(10);
 		grid.setPadding(new Insets(25,25,25,25));
+
 		Button btn = new Button();
+
+		VBox root = new VBox();
+		Scene scene1 = new Scene(root);
+
+		root.setPadding(new Insets(5));
+		root.setSpacing(5);
+		root.getChildren().add(grid);
+		stage.setTitle("Location Getter");
+		stage.setScene(scene1);
+		stage.setWidth(1000);
+		stage.setHeight(700);
+
+		stage.show();
+
+
 		btn.setText("Browse");
+
 		DropShadow shadow = new DropShadow();
 		//Adding the shadow when the mouse cursor is on
 		btn.addEventHandler(MouseEvent.MOUSE_ENTERED, (MouseEvent e) -> {
 		    btn.setEffect(shadow);
 		});
+
 		 
 		//Removing the shadow when the mouse cursor is off
 		btn.addEventHandler(MouseEvent.MOUSE_EXITED, (MouseEvent e) -> {
@@ -75,29 +93,39 @@ public class Main extends Application {
 				}
 				  root.setPadding(new Insets(5));
 			        root.setSpacing(5);
-			        Scene scene = new Scene(root);
+			        Scene scene2 = new Scene(root);
 			        stage.setTitle("steinny.web.view");
-			        stage.setScene(scene);
+			        stage.setScene(scene2);
 			        stage.setWidth(1000);
 			        stage.setHeight(700);
-				root.getChildren().addAll(browser);
+				root.getChildren().add(browser);
 		        webEngine.loadContent(htmlResponse);
-		        stage.show();
+
+
+				Button btn1 = new Button();
+				btn1.setText("Back");
+				DropShadow shadow1 = new DropShadow();
+				btn1.addEventFilter(MouseEvent.MOUSE_ENTERED, (MouseEvent e) -> {
+					btn1.setEffect(shadow1);
+				});
+				btn1.addEventFilter(MouseEvent.MOUSE_EXITED, (MouseEvent e) ->{
+					btn1.setEffect(null);
+				});
+				btn1.setOnAction(event -> stage.setScene(scene1));
+				root.getChildren().add(btn1);
+
+
+				stage.show();
 			}
 		});
-		VBox root = new VBox();
-        root.setPadding(new Insets(5));
-        root.setSpacing(5);
-        root.getChildren().add(grid);
-        Scene scene = new Scene(root);
-        stage.setTitle("steinny.web.view");
-        stage.setScene(scene);
-        stage.setWidth(1000);
-        stage.setHeight(700);
-        stage.show();
+
+
+
+
 	}
 	
 	public static void main(String[] args) {
 		launch(args);
+
 	}
 }
