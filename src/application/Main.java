@@ -43,6 +43,7 @@ public class Main extends Application {
 		grid.setPadding(new Insets(25,25,25,25));
 		Label locationText = new Label();
 		locationText.setText("Location:");
+		//locationText.setFont(Font.font("Aria",FontWeight.BOLD,40));
 		grid.add(locationText, 0, 0);
 		TextField location = new TextField();
 		Button btn = new Button();
@@ -52,7 +53,7 @@ public class Main extends Application {
 		root.setPadding(new Insets(5));
 		root.setSpacing(5);
 		root.getChildren().add(grid);
-		stage.setTitle("steinny@inc");
+		stage.setTitle("SkyView@inc");
 		Scene scene1 = new Scene(border,800,800);
 		// adding a scene in the main window
 		border.getChildren().add(root);
@@ -73,8 +74,7 @@ public class Main extends Application {
 		        // set background SkyView/src/graphics/
 		        border.setBackground(background); 
 			} catch (FileNotFoundException e2) {
-				// TODO Auto-generated catch block
-				e2.printStackTrace();
+				e2.getMessage();
 			} 
 	        
 			stage.setScene(scene1);
@@ -101,6 +101,8 @@ public class Main extends Application {
 					Geotag located = new Geotag(myLocation);
 					String htmlResponse;
 					VBox root = new VBox();
+					// adding a main layout
+					Pane pane = new Pane();
 					try {
 						located.call_me();
 						Send_HTTP_Request2 request = new Send_HTTP_Request2(located.lat, located.lon);
@@ -121,14 +123,22 @@ public class Main extends Application {
 				    root.setPadding(new Insets(5));
 				    root.setAlignment(Pos.CENTER);
 				    root.setSpacing(5);
-				    Scene scene2 = new Scene(root);
+				    root.setMaxHeight(1000);
+				    root.setMaxWidth(1000);
+				    Scene scene2 = new Scene(pane);
 				    stage.setTitle("steinny.web.view");
 				    stage.setScene(scene2);
 				    stage.setWidth(1000);
 				    stage.setHeight(700);
 					root.getChildren().add(browser);
+			        // loading the map content
+			        String url="https://www.google.com/maps/place/"+myLocation+"/";  
+			        final WebView map = new WebView();
+					final WebEngine mapEngine = map.getEngine();
+					// adding the web view in the pane 
+			        pane.getChildren().addAll(root,map);
+			        mapEngine.load(url);
 			        webEngine.loadContent(htmlResponse);
-			        
 					Button btn1 = new Button();
 					btn1.setText("Back");
 					DropShadow shadow1 = new DropShadow();
@@ -144,6 +154,30 @@ public class Main extends Application {
 				}
 			});
 	}
+	
+
+/*
+ * ProgressBar progressBar = new ProgressBar();
+ *   // A Worker load the page
+       Worker<Void> worker = webEngine.getLoadWorker();
+ 
+        // Listening to the status of worker
+       worker.stateProperty().addListener(new ChangeListener<State>() {
+ 
+           @Override
+           public void changed(ObservableValue<? extends State> observable, State oldValue, State newValue) {
+               stateLabel.setText("Loading state: " + newValue.toString());
+               if (newValue == Worker.State.SUCCEEDED) {
+                   stage.setTitle(webEngine.getLocation());
+                   stateLabel.setText("Finish!");
+               }
+           }
+       });
+ 
+       // Bind the progress property of ProgressBar
+       // with progress property of Worker
+       progressBar.progressProperty().bind(worker.progressProperty());
+ */
 	public static void main(String[] args) {
 		launch(args);
 	}
