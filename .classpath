@@ -8,6 +8,8 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Javafx"/>
-	<classpathentry kind="lib" path="/home/charity/Documents/jar_files/json-20200518.jar"/>
+	<classpathentry kind="lib" path="/home/charity/sqljdbc_8.4/enu/mssql-jdbc-8.4.1.jre14.jar"/>
+	<classpathentry kind="lib" path="/home/charity/Jlib/java-json.jar"/>
+	<classpathentry kind="lib" path="/home/charity/Jlib/jfoenix-9.0.10.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
