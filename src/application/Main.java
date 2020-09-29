@@ -329,14 +329,12 @@ public class Main extends Application {
 
 				 }
 
-
-
 			}
 		});
 
 		FileInputStream input;
 		try {
-			input = new FileInputStream("C:\\Users\\Shoko\\Pictures\\Camera Roll\\weatherimg.jpg");
+			input = new FileInputStream("/home/charity/practjvm/SkyView/src/graphics/weathering.jpeg");
 			//---create a image---
 			Image image = new Image(input);
 			//---create a background image---
@@ -355,7 +353,7 @@ public class Main extends Application {
 
 		} catch (FileNotFoundException e2) {
 			// TODO Auto-generated catch block
-			e2.printStackTrace();
+			e2.getMessage();
 		}
 
 
