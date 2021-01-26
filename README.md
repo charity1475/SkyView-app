@@ -18,28 +18,6 @@
 
 ### 🏠 [Homepage](https://github.com/kefranabg/readme-md-generator#readme)
 
-## Prerequisites
-
-- npm >=5.5.0
-- node >=9.3.0
-
-## Install
-
-```sh
-npm install
-```
-
-## Usage
-
-```sh
-npm run start
-```
-
-## Run tests
-
-```sh
-npm run test
-```
 
 ## Author
 
@@ -60,6 +38,3 @@ Give a ⭐️ if this project helped you!
 
 Copyright © 2021 [charity ft shoko](https://github.com/charity1475).<br />
 This project is [MIT](https://github.com/kefranabg/readme-md-generator/blob/master/LICENSE) licensed.
-
-***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
